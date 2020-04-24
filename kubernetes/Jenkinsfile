@@ -49,13 +49,14 @@ podTemplate(label: label, containers: [
 
 		// #4 Sonarqube 정적분석 Stage
 		stage('Static Code Analysis') {
-			container('scanner') { 
+			container('scanner') {
 				sh "sonar-scanner \
-				-Dsonar.projectName=${sonarQubeProject} \
-				-Dsonar.host.url=${sonarQubeURL} \
-				-Dsonar.projectBaseDir=./”
+					-Dsonar.projectKey=${sonarQubeProject} \
+					-Dsonar.projectName=${sonarQubeProject} \
+					-Dsonar.projectBaseDir=./ \
+					-Dsonar.host.url=${sonarQubeURL}"
 			}
-			}
+		}
 
 		// #5 컨테이너 이미지 생성 Stage
 			stage('Dockerizing') {
