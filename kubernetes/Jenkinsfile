@@ -74,7 +74,7 @@ podTemplate(label: label, containers: [
 		stage('Deploy') {
 			container('kubectl') {
 				sh "kubectl apply -n ${namespace} -f ${deployment}"
-				sh "kubectlapply -n ${namespace} -f ${service}"
+				sh "kubectl apply -n ${namespace} -f ${service}"
 				sh "kubectl get svc -n lab15"
 			}
 		}
