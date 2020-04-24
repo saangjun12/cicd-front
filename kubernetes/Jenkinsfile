@@ -75,6 +75,7 @@ podTemplate(label: label, containers: [
 				sh "kubectl apply -n ${namespace} -f ${deployment}"
 				sh "kubectlapply -n ${namespace} -f ${service}"
 				sh "kubectl get svc -n devops" 
+				sh "kubectl get svc -n lab15"
 			}
 		}
 
